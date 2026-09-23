@@ -1,14 +1,15 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { TONE_STYLES } from "../lib/tone";
-import type { TimelineStep, Tone } from "../types";
+import { SCENARIO_ICONS, TONE_STYLES } from "../lib/tone";
+import type { Scenario, TimelineStep, Tone } from "../types";
 
 interface TrackingTimelineProps {
   steps: TimelineStep[];
   tone: Tone;
+  scenario: Scenario;
 }
 
-export function TrackingTimeline({ steps, tone }: TrackingTimelineProps) {
+export function TrackingTimeline({ steps, tone, scenario }: TrackingTimelineProps) {
   return (
     <section aria-labelledby="timeline-heading" className="rounded-2xl border bg-card p-5">
       <h2 id="timeline-heading" className="mb-4 font-semibold">
@@ -30,7 +31,7 @@ export function TrackingTimeline({ steps, tone }: TrackingTimelineProps) {
                 )}
               />
             )}
-            <StepMarker step={step} tone={tone} />
+            <StepMarker step={step} tone={tone} scenario={scenario} />
             <div className="min-w-0 pt-0.5">
               <p className={cn("text-sm font-medium", step.state === "upcoming" && "text-muted-foreground")}>
                 {step.title}
@@ -47,7 +48,7 @@ export function TrackingTimeline({ steps, tone }: TrackingTimelineProps) {
   );
 }
 
-function StepMarker({ step, tone }: { step: TimelineStep; tone: Tone }) {
+function StepMarker({ step, tone, scenario }: Omit<TrackingTimelineProps, "steps"> & { step: TimelineStep }) {
   if (step.state === "complete") {
     return (
       <span className="z-10 flex size-7 shrink-0 items-center justify-center rounded-full bg-foreground text-background">
@@ -57,7 +58,7 @@ function StepMarker({ step, tone }: { step: TimelineStep; tone: Tone }) {
   }
 
   if (step.state === "current") {
-    const Icon = TONE_STYLES[tone].icon;
+    const Icon = SCENARIO_ICONS[scenario];
     return (
       <span
         className={cn(

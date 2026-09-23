@@ -1,11 +1,11 @@
 import { CalendarClock } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { TONE_STYLES } from "../lib/tone";
+import { SCENARIO_ICONS, TONE_STYLES } from "../lib/tone";
 import type { OrderView } from "../types";
 
 export function StatusHero({ view }: { view: OrderView }) {
   const tone = TONE_STYLES[view.tone];
-  const Icon = tone.icon;
+  const Icon = SCENARIO_ICONS[view.scenario];
 
   return (
     <section aria-labelledby="status-headline" className={cn("rounded-2xl border p-5", tone.surface)}>

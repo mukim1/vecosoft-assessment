@@ -63,7 +63,7 @@ export function OrderTrackingScreen({ orderId }: { orderId: string }) {
       {view.scenario === "delivered" && order.deliveryProof && (
         <DeliveredCard orderId={order.id} proof={order.deliveryProof} />
       )}
-      <TrackingTimeline steps={view.steps} tone={view.tone} />
+      <TrackingTimeline steps={view.steps} tone={view.tone} scenario={view.scenario} />
       <OrderSummary order={order} />
       <SupportActions orderId={order.id} />
     </div>
