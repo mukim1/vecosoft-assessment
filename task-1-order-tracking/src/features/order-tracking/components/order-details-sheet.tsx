@@ -3,6 +3,7 @@
 import { ReceiptText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetDescription } from "@/components/ui/sheet";
 import { formatDateTime, formatMoney } from "../lib/format";
 import { BOTTOM_SHEET_CLASS } from "../lib/sheet";
@@ -62,14 +63,27 @@ export function OrderDetailsSheet({ order, total }: OrderDetailsSheetProps) {
           </DetailGroup>
 
           <DetailGroup title="Tracking history">
-            <ol className="space-y-3">
-              {history.map((event) => (
-                <li key={event.at}>
-                  <p className="font-medium">{event.description}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {formatDateTime(event.at)}
-                    {event.location && ` · ${event.location}`}
-                  </p>
+            <ol>
+              {history.map((event, index) => (
+                <li key={event.at} className="relative flex gap-3 pb-4 last:pb-0">
+                  {index < history.length - 1 && (
+                    <span aria-hidden className="absolute top-3 left-[4.5px] h-full w-px bg-border" />
+                  )}
+                  {/* The newest event gets a filled dot; older ones are hollow. */}
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "z-10 mt-1.5 size-2.5 shrink-0 rounded-full border-2",
+                      index === 0 ? "border-foreground bg-foreground" : "border-muted-foreground bg-background",
+                    )}
+                  />
+                  <div className="min-w-0">
+                    <p className={cn(index === 0 ? "font-medium" : "text-muted-foreground")}>{event.description}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {formatDateTime(event.at)}
+                      {event.location && ` · ${event.location}`}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ol>
