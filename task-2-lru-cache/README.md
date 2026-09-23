@@ -98,4 +98,14 @@ cache.put("B", 20, 3000); // per-entry override
 
 ## Output
 
-Screenshots of `npm run demo`, `npm run demo:ttl` and `npm test` are in [`screenshots/`](screenshots/).
+`npm run demo`: the example from the brief, with every put/get/eviction:
+
+![npm run demo](screenshots/demo.png)
+
+`npm run demo:ttl`: TTL expiry, including a stale LRU entry evicted as `expired`:
+
+![npm run demo:ttl](screenshots/ttl-demo.png)
+
+`npm test`: 13 tests passing:
+
+![npm test](screenshots/tests.png)
