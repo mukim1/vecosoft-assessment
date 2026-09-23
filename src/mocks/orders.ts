@@ -1,14 +1,15 @@
 import type { Order, OrderItem } from "@/features/order-tracking/types";
 
 /**
- * Demo fixtures. Dates are relative to the moment the module loads, so every
+ * Demo fixtures. Dates are relative to the hour the module loads, so every
  * scenario (late, delivered today, ...) looks right whenever the demo is opened.
  */
 
 const HOUR = 60 * 60 * 1000;
+const thisHour = Math.floor(Date.now() / HOUR) * HOUR;
 
 function hoursFromNow(hours: number): string {
-  return new Date(Date.now() + hours * HOUR).toISOString();
+  return new Date(thisHour + hours * HOUR).toISOString();
 }
 
 const headphones: OrderItem = {
