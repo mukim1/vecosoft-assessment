@@ -27,14 +27,14 @@ export function DelayBanner({ orderId, delay }: DelayBannerProps) {
         What changed
       </h2>
 
-      <dl className="mt-3 grid gap-2 text-sm">
-        <div className="flex justify-between gap-4">
-          <dt className="text-muted-foreground">Originally</dt>
-          <dd className="text-right text-muted-foreground line-through">{delay.originalEta}</dd>
+      <dl className="mt-3 grid grid-cols-2 gap-3 text-sm">
+        <div>
+          <dt className="text-xs text-muted-foreground">Originally</dt>
+          <dd className="text-muted-foreground line-through">{delay.originalEta}</dd>
         </div>
-        <div className="flex justify-between gap-4">
-          <dt className="text-muted-foreground">Now expected</dt>
-          <dd className="text-right font-semibold">{delay.newEta}</dd>
+        <div>
+          <dt className="text-xs text-muted-foreground">Now expected</dt>
+          <dd className="font-semibold">{delay.newEta}</dd>
         </div>
       </dl>
 
