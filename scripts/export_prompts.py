@@ -48,10 +48,19 @@ def main():
                     entry = json.loads(line)
                 except json.JSONDecodeError:
                     continue
-                if is_real_prompt(entry) and entry.get("timestamp", "") >= args.since:
-                    text = extract_text(entry["message"]["content"]).strip()
-                    if text:
-                        prompts.append((entry["timestamp"], entry.get("cwd", ""), text))
+                if is_real_prompt(entry):
+                    timestamp, content = entry.get("timestamp", ""), entry["message"]["content"]
+                # Prompts typed while Claude is mid-turn are stored as queued_command attachments.
+                elif entry.get("type") == "attachment" and entry["attachment"].get("type") == "queued_command":
+                    timestamp, content = entry["attachment"]["timestamp"], entry["attachment"]["prompt"]
+                else:
+                    continue
+                text = extract_text(content).strip()
+                # Background-task notifications are injected by Claude Code, not typed by the user.
+                if text.startswith("<task-notification>"):
+                    continue
+                if text and timestamp >= args.since:
+                    prompts.append((timestamp, entry.get("cwd", ""), text))
 
     prompts.sort(key=lambda p: p[0])
     sys.stdout.reconfigure(encoding="utf-8")
