@@ -33,6 +33,23 @@
 - শুধু `order-service.ts` বদলালেই আসল API যুক্ত করা যাবে।
 - প্রতিটি scenario আলাদা লিংকে খোলে, তাই মূল্যায়নকারীর জন্য দেখা সহজ।
 
+**কীভাবে করা হয়েছে এবং কেন (ডেটা কীভাবে প্রবাহিত হয়):**
+
+```
+URL /orders/VS-1002
+  → page.tsx (Server Component): URL থেকে orderId নেয়, হেডার দেখায়
+  → OrderTrackingScreen ("use client"): useOrderTracking(orderId)
+      → TanStack Query → order-service.getOrder() (~900ms delay, mock ডেটা)
+  → অপেক্ষার সময় Skeleton | error হলে Try again | অর্ডার না পেলে "খুঁজে পাওয়া যায়নি"
+  → deriveOrderView(order, now) → view model (scenario, রং, শিরোনাম, ETA, timeline)
+  → কম্পোনেন্টগুলো শুধু view model দেখায়
+```
+
+- **Scenario নির্ধারণের নিয়ম (`derive-status.ts`):** delivered হলে → `delivered`; carrier নেই → `tracking-pending`; delay লেখা আছে বা ETA পার হয়ে গেছে → `delayed`; বাকি সব → `on-track`। কেন: সব নিয়ম এক জায়গায় থাকলে বুঝতে, বদলাতে ও টেস্ট করতে সহজ।
+- **Mock তারিখ "এখন"-এর সাপেক্ষে:** তাই যেকোনো সময় খুললে দেরির অর্ডার দেরিতেই দেখায়।
+- **Bottom sheet:** বিস্তারিত দেখা, রিপোর্ট করা ও বাতিলের জন্য, কারণ মোবাইলে এটাই স্বাভাবিক ধরন।
+- **Accessibility:** timeline একটি `<ol>`, বর্তমান ধাপে `aria-current="step"`, শুধু রং নয়, সঙ্গে আইকন ও লেখাও থাকে।
+
 **অসুবিধা / ট্রেড-অফ:**
 - ডেটা client-side-এ আসে (TanStack Query), তাই প্রথম render-এ skeleton দেখায়, server-side rendering-এর সুবিধা কম।
 - Mock ডেটার সময় "এখন" থেকে হিসাব করা, তাই পেজ অনেকক্ষণ খোলা থাকলে সময় একটু পুরনো হতে পারে।
