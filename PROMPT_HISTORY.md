@@ -9,7 +9,55 @@ Tool: Claude Code (VS Code extension), model Claude Opus 5.5.
 
 ## Session 1
 
-_Filled in from the first Claude Code session (project setup, Task 2 LRU cache)._
+_Project setup, tech stack, workspace/CLAUDE.md, Task 2 LRU cache. Session id `04fd5a18-dceb-4e80-b58c-0e344a2f559d`._
+
+> Prompt 1 contains text I pasted from my own notes (it was wrapped in `<pasted_content>` tags by the editor; tags removed, text unchanged). Prompt 3 was sent while Claude was still working on Prompt 2. Sessions overlapped: Session 1 Prompt 5 was sent after all Session 2 prompts — use the timestamps for the exact global order.
+
+### Session 1 — Prompt 1 (2026-09-23T06:05:09.225Z)
+
+```text
+[image attached]
+[image attached]
+[image attached]
+[image attached]
+[image attached]
+[image attached]
+[image attached]
+[image attached]
+[image attached]
+
+Guide and help me to complete the assessment, as they encourage AI usage, include the given instructions in the Claude MD files, and prepare the skills files and MCP environment if needed. Also suggest what else we can add or change.
+
+1. Suggest the best tech stack for this project and its pros and cons.
+2. Always use the official command to install the framework or library instead of adding them manually; we shouldn't write the boilerplate code, right?
+3. Before writing code, Focus on project scalability, optimization, and performance, and use reusable code as much as possible.
+
+4. create 4 folder with the task name and number, skip task 4 for now, we will do it at the last, and suggest me which task we should do first.
+```
+
+### Session 1 — Prompt 2 (2026-09-23T06:11:26.347Z)
+
+```text
+before starting the task 2, create 4 folder based on task name and number, keep the md, skills, MCP or any AI instruction related files and folders in the root directory, the start task 2, isn't it better approach?
+```
+
+### Session 1 — Prompt 3 (2026-09-23T06:14:09.251Z)
+
+```text
+give me the command to open the vs code to the root directory of this project.
+```
+
+### Session 1 — Prompt 4 (2026-09-23T06:40:28.682Z)
+
+```text
+explain in bangla
+```
+
+### Session 1 — Prompt 5 (2026-09-23T08:52:10.522Z)
+
+```text
+Check PROMPT_HISTORY.md and include the prompts of yours (this sesson) at the first sesson.
+```
 
 ---
 
@@ -77,4 +125,10 @@ as ordered list
 
 ```text
 write a md file for the prompt history, group by sesson, i have completed 3 tasks of this assessment using two claude code sesson, write you own history in second part then first sesson will shate its own prompts, right?
+```
+
+### Session 2 — Prompt 10 (2026-09-23T08:54:48.628Z)
+
+```text
+Push the changes to the ropo, and summarize what we have done so far, and pros and cons of this assessment.
 ```
