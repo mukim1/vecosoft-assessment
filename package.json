@@ -1,0 +1,21 @@
+{
+  "name": "lru-cache",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node --disable-warning=ExperimentalWarning --test \"tests/**/*.test.ts\"",
+    "demo": "node --disable-warning=ExperimentalWarning examples/demo.ts",
+    "demo:ttl": "node --disable-warning=ExperimentalWarning examples/ttl-demo.ts",
+    "typecheck": "tsc"
+  },
+  "author": "Mukim Billah",
+  "license": "MIT",
+  "type": "module",
+  "description": "O(1) LRU cache with optional TTL, written in TypeScript",
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}
