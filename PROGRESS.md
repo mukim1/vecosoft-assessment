@@ -6,7 +6,7 @@
 ## এখন পর্যন্ত যা করা হয়েছে
 
 - **Task 2 (LRU Cache):** সম্পূর্ণ। ১৩টি টেস্ট পাস, typecheck ঠিক আছে, দুটি ডেমো চলে। বাকি শুধু output screenshot।
-- **Task 1 (Order Tracking):** UI তৈরি শেষ। lint, typecheck ও build পাস করেছে। 360px ও 390px-এ যাচাই করা হয়েছে, horizontal scroll নেই। বাকি: README, Vercel deploy।
+- **Task 1 (Order Tracking):** UI তৈরি শেষ। lint, typecheck ও build পাস করেছে। 360px ও 390px-এ যাচাই করা হয়েছে, horizontal scroll নেই। README লেখা ও Vercel-এ deploy করা হয়েছে: https://task-1-order-tracking.vercel.app। অর্ডার তালিকায় প্রতিটি অর্ডারের পাশে status আইকন যোগ করা হয়েছে (ট্রাক = পথে, সতর্কতা = দেরি, টিক = পৌঁছেছে, ঘড়ি = ট্র্যাকিং শিগগিরই)। একই আইকন হিরো কার্ড ও টাইমলাইনেও ব্যবহার হয়।
 - **Repo:** দুটি আলাদা git repo-কে একটি repo-তে (`mukim1/vecosoft-assessment`) একত্র করা হয়েছে, সব commit history সহ।
 - **Task 3, Task 4:** এখনও শুরু হয়নি।
 

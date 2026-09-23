@@ -2,7 +2,7 @@
 
 A mobile Order Tracking screen for an e-commerce app. It replaces bare status labels ("Processing / Shipped / …") with a plain-language headline, a clear delivery timeline, the estimated delivery time and obvious next steps.
 
-**Live demo:** _add Vercel URL_ · Open the home page and pick a scenario. Each one is a direct link:
+**Live demo:** https://task-1-order-tracking.vercel.app · Open the home page and pick a scenario. Each one is a direct link:
 
 | Scenario | URL |
 |---|---|
